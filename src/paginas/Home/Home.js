@@ -25,6 +25,29 @@ class Home extends React.Component {
         },3000)
     }
 
+    handleEnviarFeedback = (e) => {
+        e.preventDefault()
+        const usuarioLogado = JSON.parse(localStorage.getItem('usuario')) || {}
+        const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || []
+        const feedback = {
+            idDe: usuarioLogado.id,
+            idPara: this.state.idPara,
+            texto: this.state.texto,
+            data: new Date(),
+        }
+        feedbacks.push(feedback)
+        localStorage.setItem('feedbacks', JSON.stringify(feedbacks))
+    } 
+
+    handleFeedbackChange = (e) => {
+
+        const value = e.target.value
+        const name = e.target.name
+        this.setState({
+            [name]: value
+        })
+    }
+
     filtraUsuarioPorId = (id) => {
         const usuarios = JSON.parse(localStorage.getItem('usuarios')) || []
 
@@ -35,14 +58,9 @@ class Home extends React.Component {
         return usuario
     }
 
-    selecionarUsuarios = () => {
-        const usuarios = JSON.parse(localStorage.getItem('usuarios'))
-        const idUsuarioAvaliado = usuarios.map(this.id)
-        const nomeUsuarioAvaliado = usuarios.map(this.nome)
-
-        return (
-            <option value={idUsuarioAvaliado}>{nomeUsuarioAvaliado}</option>
-        )
+    listaUsuarios = () => {
+        const usuarios = JSON.parse(localStorage.getItem('usuarios')) || []
+        return usuarios
     }
 
     render() {
@@ -61,13 +79,17 @@ class Home extends React.Component {
                         ))
                     )
                 }
-                
-                <form>
-                    <select>
-                        {this.selecionarUsuarios()}
-                    </select>
-                </form>
 
+                <form onSubmit={this.handleEnviarFeedback}>
+                
+                    <select name="idPara" onChange={this.handleFeedbackChange}>
+                        {this.listaUsuarios().map(usuario => (
+                            <option value={usuario.id}>{usuario.nome}</option>
+                        ))}
+                    </select>
+                    <textarea name="texto"  onChange={this.handleFeedbackChange} />
+                    <button>Enviar feedback</button>
+                </form>
             </div>
         )
     }

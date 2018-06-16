@@ -5,13 +5,13 @@ const configuracoes = {
     timeout: 1000
 }
 
-const usuario = JSON.parse(localStorage.getItem('usuario'))
+// const usuario = JSON.parse(localStorage.getItem('usuario')) || ''
 
-if (usuario) {
-    configuracoes.headers = {
-        'Authorization': usuario.token
-    }
-}
+// if (usuario) {
+//     configuracoes.headers = {
+//         'Authorization': usuario.token
+//     }
+// }
 
 const protocolo = axios.create(configuracoes)
 
