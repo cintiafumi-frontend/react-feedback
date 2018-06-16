@@ -3,6 +3,7 @@ import Formulario from '../../componentes/Formulario/Formulario'
 import Grupo from '../../componentes/Formulario/Grupo/Grupo'
 import Botao from '../../componentes/Formulario/Botao/Botao'
 import Link from '../../componentes/Formulario/Link/Link'
+import * as apiUsuarios from '../../apis/usuarios'
 import './Login.css'
 
 // const props = {
@@ -34,21 +35,19 @@ class Login extends React.Component {
         const estaDesabilitado = this.estaDesabilitado()
 
         if (!estaDesabilitado) {
+            const usuario = {
+                email: this.state.email.valor,
+                senha: this.state.senha.valor
+            }
 
-            const usuarios = JSON.parse(localStorage.getItem('usuarios')) || []
-
-            const usuarioLogado = usuarios.filter( usuario => (
-                this.state.email.valor === usuario.email &&
-                this.state.senha.valor === usuario.senha
-            ))
+            const usuarioLogado = apiUsuarios.postUsuario(usuario)
 
             if (usuarioLogado) {
-                this.props.onEnviarClick(usuarioLogado[0])
+                this.props.onEnviarClick(usuarioLogado)
                 this.props.historico.push('/')
             } else {
                 alert("Usuário e/ou senha inválidos")
             }
-
         }
         
     }

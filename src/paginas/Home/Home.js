@@ -1,8 +1,8 @@
 import React from 'react'
-import Postit from '../../componentes/Postit/Postit'
 import Loading from '../../componentes/Loading/Loading'
-import loading from './loading.svg'
-import * as apiPostit from '../../apis/postits'
+import Postit from '../../componentes/Postit/Postit'
+import * as apiUsuarios from '../../apis/usuarios'
+import * as apiFeedbacks from '../../apis/feedbacks'
 import './Home.css'
 
 
@@ -13,83 +13,70 @@ class Home extends React.Component {
     }
 
     componentDidMount () {
-        const usuarioLogado = JSON.parse(localStorage.getItem('usuario')) || {}
-        const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || []
-        const feedbacksUsuarioLogado = feedbacks.filter(feedback => {
-            return feedback.idPara === usuarioLogado.id
-        })
-        this.setState({ feedbacks: feedbacksUsuarioLogado})
-
-        setTimeout( () => {
-            this.setState({ carregando: false })
-        },3000)
+        const feedbacksDoUsuarioLogado = apiFeedbacks.getFeedbacksDoUsuarioLogado()
+        
+        setTimeout(() => {
+            this.setState({ 
+                feedbacks: feedbacksDoUsuarioLogado,
+                carregando: false 
+            })
+        }, 3000)
     }
 
-    handleEnviarFeedback = (e) => {
+    handleFeedbackSubmit = e => {
         e.preventDefault()
-        const usuarioLogado = JSON.parse(localStorage.getItem('usuario')) || {}
-        const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || []
+        
         const feedback = {
-            idDe: usuarioLogado.id,
             idPara: this.state.idPara,
-            texto: this.state.texto,
-            data: new Date(),
+            texto: this.state.texto
         }
-        feedbacks.push(feedback)
-        localStorage.setItem('feedbacks', JSON.stringify(feedbacks))
+        
+        apiFeedbacks.putFeedback(feedback)
+
+        // Faltava limpar o state para poder limpar os valores do formulário
+        this.setState({ idPara: '', texto: '' })
+
+        // Alerta avisando que foi enviado com sucesso
+        alert('Feedback enviado com successo!')
     } 
 
-    handleFeedbackChange = (e) => {
-
+    handleFeedbackChange = e => {
         const value = e.target.value
         const name = e.target.name
-        this.setState({
-            [name]: value
-        })
-    }
 
-    filtraUsuarioPorId = (id) => {
-        const usuarios = JSON.parse(localStorage.getItem('usuarios')) || []
-
-        const usuario = usuarios.filter( (usuario) => {
-            return usuario.id === id
-        })[0]
-
-        return usuario
-    }
-
-    listaUsuarios = () => {
-        const usuarios = JSON.parse(localStorage.getItem('usuarios')) || []
-        return usuarios
+        this.setState({ [name]: value })
     }
 
     render() {
         return (
             <div className="home">
-                {
-                    this.state.carregando ? (
-                        <Loading />
-                    ) : (
-                        this.state.feedbacks.map(feedback => (
+                {this.state.carregando ? (
+                    <Loading />
+                ) : (
+                    <div>
+                        <form onSubmit={this.handleFeedbackSubmit}>
+                            {/* Faltava o atributo value pegando do state */}
+                            
+                            <select name="idPara" value={this.state.idPara} onChange={this.handleFeedbackChange}>
+                                {apiUsuarios.getUsuariosNaoLogados().map(usuario => (
+                                    <option value={usuario.id}>{usuario.nome}</option>
+                                ))}
+                            </select>
+
+                            <textarea name="texto" value={this.state.texto} onChange={this.handleFeedbackChange} />
+                            
+                            <button>Enviar feedback</button>
+                        </form>
+
+                        {this.state.feedbacks.map(feedback => (
                             <Postit 
                                 key={feedback.idDe + feedback.idPara}
-                                de={this.filtraUsuarioPorId(feedback.idDe)}
+                                de={apiUsuarios.getUsuarioPorId(feedback.idDe)}
                                 texto={feedback.texto}
                             />
-                        ))
-                    )
-                }
-
-                <form onSubmit={this.handleEnviarFeedback}>
-                
-                    <select name="idPara" onChange={this.handleFeedbackChange}>
-                        {this.listaUsuarios().map(usuario => (
-                            <option value={usuario.id}>{usuario.nome}</option>
                         ))}
-                    </select>
-                    <textarea name="texto"  onChange={this.handleFeedbackChange} />
-                    <button>Enviar feedback</button>
-                </form>
+                    </div>
+                )}
             </div>
         )
     }

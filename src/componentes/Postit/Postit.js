@@ -1,5 +1,5 @@
 import React from 'react'
-import FaClose from 'react-icons/lib/fa/close'
+// import FaClose from 'react-icons/lib/fa/close'
 import './Postit.css'
 
 
