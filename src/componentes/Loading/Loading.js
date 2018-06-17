@@ -1,10 +1,13 @@
 import React from 'react'
 import './Loading.css'
 
-function Loading () {
+
+function Loading() {
     return (
-        <div className="loader">
-            <span>{"{"}</span><span>{"}"}</span>
+        <div className="loading">
+            <div className="loading__loader">
+                <span>{"{"}</span><span>{"}"}</span>
+            </div>
         </div>
     )
 }

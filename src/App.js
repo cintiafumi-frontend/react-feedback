@@ -53,14 +53,13 @@ const feedbacks = [
 localStorage.setItem('usuarios', JSON.stringify(usuarios))
 localStorage.setItem('feedbacks', JSON.stringify(feedbacks))
 
-console.log('localStorage.getItem("usuario")', localStorage.getItem('usuario'))
 
 class App extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = { 
-      usuario: localStorage.getItem('usuario') ? null : JSON.parse(localStorage.getItem('usuario'))
+      usuario: localStorage.getItem('usuario') === 'undefined' ? null : JSON.parse(localStorage.getItem('usuario'))
     }
 
     this.logaUsuario = this.logaUsuario.bind(this)

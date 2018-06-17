@@ -1,14 +1,52 @@
+export function getUsuarioLogado() {
+    const usuario = JSON.parse(
+        localStorage.getItem('usuario') || '{}'
+    )
+    
+    return usuario
+}
+
+
+export function getUsuariosNaoLogados() {
+    const usuarioLogado = getUsuarioLogado()
+    const usuarios = getTodosUsuarios()
+
+    const filtrados = usuarios.filter(
+        usuario => usuario.id !== usuarioLogado.id
+    )
+
+    return filtrados
+}
+
+
+export function getTodosUsuarios() {
+    const usuarios = JSON.parse(
+        localStorage.getItem('usuarios') || '[]'
+    )
+
+    return usuarios;
+}
+
+
+export function getUsuarioPorId(id) {
+    const usuarios = getTodosUsuarios()
+
+    const filtrados =  usuarios.filter(
+        usuario => usuario.id === id
+    )
+
+    return filtrados[0]
+}
+
+
 export function postUsuario(usuario) {
-    return new Promise( (resolve, rejct) => {
-        const usuarios = JSON.parse(localStorage.getItem('usuarios')) || []
+        const email = usuario.email
+        const senha = usuario.senha
+        const usuarios = getTodosUsuarios();
 
-        const usuarioLogado = usuarios.filter(itemDaLista => (
-            usuario.email === itemDaLista.email &&
-            usuario.senha === itemDaLista.senha
-        ))
+        const filtrados = usuarios.filter(
+            usuario => usuario.email === email && usuario.senha === senha
+        )
         
-
-        
-        resolve(usuarioLogado[0])
-    })
+        return filtrados[0]
 }
