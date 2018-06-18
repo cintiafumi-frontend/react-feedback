@@ -39,6 +39,7 @@
 
 .navbar-menu__opcoes--ativo {
     border-bottom: 2px solid white;
+    outline: 0;
 }
 
 .navbar-menu__opcoes li + li {

@@ -56,11 +56,11 @@ class Menu extends React.Component {
                 <ul className={classesDasOpcoes}>
                     <li>
                         <NavLink 
-                            to="/quem-somos" 
+                            to="/sobre" 
                             activeClassName="navbar-menu__opcoes--ativo"
                             onClick={this.handleOpcaoClick}
                         >
-                            Quem somos
+                            Sobre
                         </NavLink>
                     </li>
                     <li>

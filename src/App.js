@@ -4,7 +4,7 @@ import Home from './paginas/Home/Home'
 import Login from './paginas/Login/Login'
 import Conta from './paginas/Conta/Conta'
 import Contato from './paginas/Contato/Contato'
-import QuemSomos from './paginas/QuemSomos/QuemSomos'
+import Sobre from './paginas/Sobre/Sobre'
 import NaoEncontrada from './paginas/NaoEncontrada/NaoEncontrada'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import './App.css'
@@ -98,7 +98,7 @@ class App extends React.Component {
           
           <Route path="/conta" component={Conta} />
           <Route path="/contato" component={Contato} />
-          <Route path="/quem-somos" component={QuemSomos} />
+          <Route path="/sobre" component={Sobre} />
           <Route component={NaoEncontrada} />
         </Switch>
       </div>

@@ -10,6 +10,10 @@
     box-shadow: 0 1px 1px 0 #f0f1f4;
 }
 
+.navbar a {
+    outline: none;
+}
+
 .navbar__logo {
     display: block;
     width: 200px;

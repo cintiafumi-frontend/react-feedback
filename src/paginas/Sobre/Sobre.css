@@ -1,9 +1,9 @@
-.quem-somos {
+.sobre {
     padding: 3rem 1rem 0;
 }
 
 @media (min-width: 992px) {
-    .quem-somos {
+    .sobre {
         padding-left: 10%;
         padding-right: 10%;
     }
