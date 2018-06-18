@@ -75,13 +75,13 @@ class Home extends React.Component {
                         <div className="feedbacks">
                             <h2>Feedbacks recebidos</h2>
 
-                            {/* {this.state.feedbacks.filter(feedback => (
-                                <Feedback
-                                    key={feedback.idDe + feedback.idPara}
-                                    de={apiUsuarios.getUsuarioPorId(feedback.idDe)}
-                                    texto={feedback.texto}
-                                />
-                            ))} */}
+                        {this.state.feedbacks.map(feedback => (
+                            <Feedback 
+                                key={feedback.idDe + feedback.idPara}
+                                de={apiUsuarios.getUsuarioPorId(feedback.idDe)}
+                                texto={feedback.texto}
+                            />
+                        ))}
                         </div>
 
                         <div className="feedbacks">
