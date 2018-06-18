@@ -1,6 +1,6 @@
 import React from 'react'
 import Loading from '../../componentes/Loading/Loading'
-import Postit from '../../componentes/Postit/Postit'
+import Feedback from '../../componentes/Feedback/Feedback'
 import * as apiUsuarios from '../../apis/usuarios'
 import * as apiFeedbacks from '../../apis/feedbacks'
 import './Home.css'
@@ -30,14 +30,17 @@ class Home extends React.Component {
             idPara: this.state.idPara,
             texto: this.state.texto
         }
-        
+        console.log('idPara', feedback.idPara)
+        console.log('texto', feedback.texto)
+
         apiFeedbacks.putFeedback(feedback)
-
+        console.log('feedback', feedback)
+        console.log('this', this)
         // Faltava limpar o state para poder limpar os valores do formulário
-        this.setState({ idPara: '', texto: '' })
-
+        this.setState({ feedbacks: this.state.feedbacks.concat(feedback), idPara: '', texto: '' })
         // Alerta avisando que foi enviado com sucesso
         alert('Feedback enviado com successo!')
+        console.log('this.state handleFeedbackSubmit', this.state)
     } 
 
     handleFeedbackChange = e => {
@@ -58,6 +61,7 @@ class Home extends React.Component {
                             {/* Faltava o atributo value pegando do state */}
                             
                             <select name="idPara" value={this.state.idPara} onChange={this.handleFeedbackChange}>
+                                <option value="disable">Selecione para quem quer enviar o feedback</option>
                                 {apiUsuarios.getUsuariosNaoLogados().map(usuario => (
                                     <option value={usuario.id}>{usuario.nome}</option>
                                 ))}
@@ -68,13 +72,29 @@ class Home extends React.Component {
                             <button>Enviar feedback</button>
                         </form>
 
-                        {this.state.feedbacks.map(feedback => (
-                            <Postit 
-                                key={feedback.idDe + feedback.idPara}
-                                de={apiUsuarios.getUsuarioPorId(feedback.idDe)}
-                                texto={feedback.texto}
-                            />
-                        ))}
+                        <div className="feedbacks">
+                            <h2>Feedbacks recebidos</h2>
+
+                            {/* {this.state.feedbacks.filter(feedback => (
+                                <Feedback
+                                    key={feedback.idDe + feedback.idPara}
+                                    de={apiUsuarios.getUsuarioPorId(feedback.idDe)}
+                                    texto={feedback.texto}
+                                />
+                            ))} */}
+                        </div>
+
+                        <div className="feedbacks">
+                            <h2>Feedbacks enviados</h2>
+                            
+                            {this.state.feedbacks.map(feedback => (
+                                <Feedback 
+                                    key={feedback.idDe + feedback.idPara}
+                                    de={apiUsuarios.getUsuarioPorId(feedback.idPara)}
+                                    texto={feedback.texto}
+                                />
+                            ))}
+                        </div>
                     </div>
                 )}
             </div>

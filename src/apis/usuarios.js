@@ -29,6 +29,7 @@ export function getTodosUsuarios() {
 
 
 export function getUsuarioPorId(id) {
+    console.log('id', id)
     const usuarios = getTodosUsuarios()
 
     const filtrados =  usuarios.filter(

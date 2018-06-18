@@ -1,21 +1,7 @@
 :root {
-    --loader-color: #7F479B;
-    --loader-size: 10vh;
+    --reprograma-color: #7F479B;
+    box-sizing: border-box;
 }
-
-/* 
-  Não altere o html ou body diretamente se não afetará todos os componentes
-  Porque todos os componentes são filhos de body
-  
-  html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;  
-  }
-
-  
-*/
 
 .loading {
   display: flex;  
@@ -26,11 +12,11 @@
 } 
 
 .loading__loader {
-  color: var(--loader-color);
+  color: var(--reprograma-color);
   opacity: 0.8;
   font-family: Consolas, Menlo, Monaco, monospace;
   font-weight: bold;
-  font-size: var(--loader-size);
+  font-size: 10vh;
 }
 
 .loading__loader span {

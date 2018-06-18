@@ -34,21 +34,23 @@ const usuarios = [
   }
 ]
 
-const feedbacks = [
-  {
-    idDe: "1ad83f55-441b-4e9e-9184-4471fd02e042",
-    idPara: "1ad83f55-441b-4e9e-9184-4471fd02e041",
-    data: new Date(),
-    texto: "A Camila é incrível. Comeu todo o cookie da Aline."
-  },
-  {
-    idDe: "1ad83f55-441b-4e9e-9184-4471fd02e042",
-    idPara: "1ad83f55-441b-4e9e-9184-4471fd02e040",
-    data: new Date(),
-    texto: "Karina Maria fez o M de Maria."
-  },
+// const feedbacks = [
+//   {
+//     idDe: "1ad83f55-441b-4e9e-9184-4471fd02e042",
+//     idPara: "1ad83f55-441b-4e9e-9184-4471fd02e041",
+//     data: new Date(),
+//     texto: "A Camila é incrível. Comeu todo o cookie da Aline."
+//   },
+//   {
+//     idDe: "1ad83f55-441b-4e9e-9184-4471fd02e042",
+//     idPara: "1ad83f55-441b-4e9e-9184-4471fd02e040",
+//     data: new Date(),
+//     texto: "Karina Maria fez o M de Maria."
+//   },
 
-]
+// ]
+
+const feedbacks = []
 
 localStorage.setItem('usuarios', JSON.stringify(usuarios))
 localStorage.setItem('feedbacks', JSON.stringify(feedbacks))

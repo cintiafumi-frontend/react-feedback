@@ -1,0 +1,21 @@
+.feedback {
+    width: 90vh;
+}
+
+.feedback__user {
+    display: flex;
+}
+
+.feedback__img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.feedback__titulo {
+    font-weight: bold;
+}
+
+
+@media (min-width: 992px) {
+    width: 45vh;
+}
