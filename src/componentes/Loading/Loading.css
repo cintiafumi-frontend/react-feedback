@@ -1,6 +1,5 @@
 :root {
-    --background-color: #7F479B;
-    --loader-color: #fff;
+    --loader-color: #7F479B;
     --loader-size: 10vh;
 }
 
@@ -27,7 +26,7 @@
 } 
 
 .loading__loader {
-  color: #fff;
+  color: var(--loader-color);
   opacity: 0.8;
   font-family: Consolas, Menlo, Monaco, monospace;
   font-weight: bold;
