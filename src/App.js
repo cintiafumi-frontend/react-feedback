@@ -34,7 +34,7 @@ const usuarios = [
   }
 ]
 
-// const feedbacks = [
+// let feedbacks = [
 //   {
 //     idDe: "1ad83f55-441b-4e9e-9184-4471fd02e042",
 //     idPara: "1ad83f55-441b-4e9e-9184-4471fd02e041",
@@ -50,7 +50,7 @@ const usuarios = [
 
 // ]
 
-const feedbacks = []
+let feedbacks = []
 
 localStorage.setItem('usuarios', JSON.stringify(usuarios))
 localStorage.setItem('feedbacks', JSON.stringify(feedbacks))

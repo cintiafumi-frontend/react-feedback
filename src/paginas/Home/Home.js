@@ -9,7 +9,8 @@ import './Home.css'
 class Home extends React.Component {
     state = {
         feedbacks: [],
-        carregando: true
+        carregando: true,
+        idLogado: JSON.parse(localStorage.getItem('usuario')).id
     }
 
     componentDidMount () {
@@ -28,10 +29,9 @@ class Home extends React.Component {
         
         const feedback = {
             idPara: this.state.idPara,
-            texto: this.state.texto
+            texto: this.state.texto,
+            idDe: this.state.idLogado
         }
-        console.log('idPara', feedback.idPara)
-        console.log('texto', feedback.texto)
 
         apiFeedbacks.putFeedback(feedback)
         console.log('feedback', feedback)
@@ -51,6 +51,26 @@ class Home extends React.Component {
     }
 
     render() {
+        const recebidos = this.state.feedbacks.filter(feedback => 
+            (feedback.idPara === this.state.idLogado)).map(feedback => 
+                
+                <Feedback 
+                    key={feedback.idDe + feedback.idPara}
+                    de={apiUsuarios.getUsuarioPorId(feedback.idDe)}
+                    texto={feedback.texto}
+                />
+                
+            )
+
+        const enviados = this.state.feedbacks.filter(feedback => 
+            (feedback.idDe === this.state.idLogado)).map(feedback => 
+                <Feedback 
+                    key={feedback.idDe + feedback.idPara}
+                    de={apiUsuarios.getUsuarioPorId(feedback.idPara)}
+                    texto={feedback.texto}
+                />
+            )
+
         return (
             <div className="home">
                 {this.state.carregando ? (
@@ -61,39 +81,27 @@ class Home extends React.Component {
                             {/* Faltava o atributo value pegando do state */}
                             
                             <select name="idPara" value={this.state.idPara} onChange={this.handleFeedbackChange}>
-                                <option value="disable">Selecione para quem quer enviar o feedback</option>
+                                <option value="disable">Selecione para quem você quer enviar o feedback</option>
                                 {apiUsuarios.getUsuariosNaoLogados().map(usuario => (
                                     <option value={usuario.id}>{usuario.nome}</option>
                                 ))}
                             </select>
 
-                            <textarea name="texto" value={this.state.texto} onChange={this.handleFeedbackChange} />
+                            <textarea name="texto" placeholder="Escreva seu feedback aqui..." value={this.state.texto} onChange={this.handleFeedbackChange} />
                             
                             <button>Enviar feedback</button>
                         </form>
-
-                        <div className="feedbacks">
-                            <h2>Feedbacks recebidos</h2>
-
-                        {this.state.feedbacks.map(feedback => (
-                            <Feedback 
-                                key={feedback.idDe + feedback.idPara}
-                                de={apiUsuarios.getUsuarioPorId(feedback.idDe)}
-                                texto={feedback.texto}
-                            />
-                        ))}
-                        </div>
+                        
+                            <div className="feedbacks">
+                                <h2>Feedbacks recebidos</h2>
+                                
+                                {recebidos.length === 0 ? <p>Vc não recebeu nenhum feedback.</p> : recebidos}
+                            </div>
 
                         <div className="feedbacks">
                             <h2>Feedbacks enviados</h2>
                             
-                            {this.state.feedbacks.map(feedback => (
-                                <Feedback 
-                                    key={feedback.idDe + feedback.idPara}
-                                    de={apiUsuarios.getUsuarioPorId(feedback.idPara)}
-                                    texto={feedback.texto}
-                                />
-                            ))}
+                            {enviados.length === 0 ? <p>Vc não enviou nenhum feedback.</p> : enviados}
                         </div>
                     </div>
                 )}
