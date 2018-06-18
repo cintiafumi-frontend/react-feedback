@@ -99,21 +99,6 @@ class Conta extends React.Component {
                         />
                     </Grupo>
 
-                    <Grupo erro={this.state.telefone.erro}>
-                        <Grupo.Legenda htmlFor="telefone">
-                            Telefone:
-                        </Grupo.Legenda>
-                        <Grupo.CaixaTexto 
-                            id="telefone" 
-                            name="telefone" 
-                            type="text" 
-                            placeholder="Telefone"
-                            autoComplete="tel-national"
-                            required={true}
-                            onChange={this.handleChange} 
-                        />
-                    </Grupo>
-
                     <Grupo erro={this.state.email.erro}>
                         <Grupo.Legenda htmlFor="email">
                             Email:

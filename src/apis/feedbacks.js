@@ -15,7 +15,7 @@ export function getFeedbacksDoUsuarioLogado() {
     const feedbacks = getTodosFeedbacks()
 
     const filtrados =  feedbacks.filter(
-        feedback => feedback.idPara === usuarioLogado.id
+        feedback => (feedback.idPara === usuarioLogado.id || feedback.idDe === usuarioLogado.id)
     )
 
     return filtrados
