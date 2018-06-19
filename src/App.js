@@ -10,7 +10,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import './App.css'
 
 
-const usuarios = [
+let usuarios = [
   {
     id: "1ad83f55-441b-4e9e-9184-4471fd02e042",
     nome: "Cintia",

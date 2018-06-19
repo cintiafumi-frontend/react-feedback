@@ -8,6 +8,10 @@
     margin: 0 auto;
 }
 
+.home__section {
+    padding: 100px;
+}
+
 @media (min-width: 992px) {
     .home {
         padding: 1.5rem 10% 0;

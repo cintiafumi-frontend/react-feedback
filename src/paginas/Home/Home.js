@@ -7,107 +7,109 @@ import './Home.css'
 
 
 class Home extends React.Component {
-    state = {
-        feedbacks: [],
-        carregando: true,
-        idLogado: JSON.parse(localStorage.getItem('usuario')).id
-    }
+	state = {
+		feedbacks: [],
+		carregando: true,
+		idLogado: JSON.parse(localStorage.getItem('usuario')).id
+	}
 
-    componentDidMount () {
-        const feedbacksDoUsuarioLogado = apiFeedbacks.getFeedbacksDoUsuarioLogado()
-        
-        setTimeout(() => {
-            this.setState({ 
-                feedbacks: feedbacksDoUsuarioLogado,
-                carregando: false 
-            })
-        }, 3000)
-    }
+	componentDidMount() {
+		const feedbacksDoUsuarioLogado = apiFeedbacks.getFeedbacksDoUsuarioLogado()
 
-    handleFeedbackSubmit = e => {
-        e.preventDefault()
-        
-        const feedback = {
-            idPara: this.state.idPara,
-            texto: this.state.texto,
-            idDe: this.state.idLogado
-        }
+		setTimeout(() => {
+			this.setState({
+				feedbacks: feedbacksDoUsuarioLogado,
+				carregando: false
+			})
+		}, 3000)
+	}
 
-        apiFeedbacks.putFeedback(feedback)
-        console.log('feedback', feedback)
-        console.log('this', this)
-        // Faltava limpar o state para poder limpar os valores do formulário
-        this.setState({ feedbacks: this.state.feedbacks.concat(feedback), idPara: '', texto: '' })
-        // Alerta avisando que foi enviado com sucesso
-        alert('Feedback enviado com successo!')
-        console.log('this.state handleFeedbackSubmit', this.state)
-    } 
+	handleFeedbackSubmit = e => {
+		e.preventDefault()
 
-    handleFeedbackChange = e => {
-        const value = e.target.value
-        const name = e.target.name
+		const feedback = {
+			idPara: this.state.idPara,
+			texto: this.state.texto,
+			idDe: this.state.idLogado
+		}
 
-        this.setState({ [name]: value })
-    }
+		apiFeedbacks.putFeedback(feedback)
+		console.log('feedback', feedback)
+		console.log('this', this)
+		// Faltava limpar o state para poder limpar os valores do formulário
+		this.setState({ feedbacks: this.state.feedbacks.concat(feedback), idPara: '', texto: '' })
+		// Alerta avisando que foi enviado com sucesso
+		alert('Feedback enviado com successo!')
+		console.log('this.state handleFeedbackSubmit', this.state)
+	}
 
-    render() {
-        const recebidos = this.state.feedbacks.filter(feedback => 
-            (feedback.idPara === this.state.idLogado)).map(feedback => 
-                
-                <Feedback 
-                    key={feedback.idDe + feedback.idPara}
-                    de={apiUsuarios.getUsuarioPorId(feedback.idDe)}
-                    texto={feedback.texto}
-                />
-                
-            )
+	handleFeedbackChange = e => {
+		const value = e.target.value
+		const name = e.target.name
 
-        const enviados = this.state.feedbacks.filter(feedback => 
-            (feedback.idDe === this.state.idLogado)).map(feedback => 
-                <Feedback 
-                    key={feedback.idDe + feedback.idPara}
-                    de={apiUsuarios.getUsuarioPorId(feedback.idPara)}
-                    texto={feedback.texto}
-                />
-            )
+		this.setState({ [name]: value })
+	}
 
-        return (
-            <div className="home">
-                {this.state.carregando ? (
-                    <Loading />
-                ) : (
-                    <div>
-                        <form onSubmit={this.handleFeedbackSubmit}>
-                            {/* Faltava o atributo value pegando do state */}
-                            
-                            <select name="idPara" value={this.state.idPara} onChange={this.handleFeedbackChange}>
-                                <option value="disable">Selecione para quem você quer enviar o feedback</option>
-                                {apiUsuarios.getUsuariosNaoLogados().map(usuario => (
-                                    <option value={usuario.id}>{usuario.nome}</option>
-                                ))}
-                            </select>
+	render() {
+		const recebidos = this.state.feedbacks.filter(feedback =>
+			(feedback.idPara === this.state.idLogado)).map(feedback =>
 
-                            <textarea name="texto" placeholder="Escreva seu feedback aqui..." value={this.state.texto} onChange={this.handleFeedbackChange} />
-                            
-                            <button>Enviar feedback</button>
-                        </form>
-                        
-                            <div className="feedbacks">
-                                <h2>Feedbacks recebidos</h2>
-                                
-                                {recebidos.length === 0 ? <p>Vc não recebeu nenhum feedback.</p> : recebidos}
-                            </div>
+				<Feedback
+					key={feedback.idDe + feedback.idPara}
+					de={apiUsuarios.getUsuarioPorId(feedback.idDe)}
+					texto={feedback.texto}
+				/>
 
-                        <div className="feedbacks">
-                            <h2>Feedbacks enviados</h2>
-                            
-                            {enviados.length === 0 ? <p>Vc não enviou nenhum feedback.</p> : enviados}
-                        </div>
-                    </div>
-                )}
-            </div>
-        )
-    }
+			)
+
+		const enviados = this.state.feedbacks.filter(feedback =>
+			(feedback.idDe === this.state.idLogado)).map(feedback =>
+				<Feedback
+					key={feedback.idDe + feedback.idPara}
+					de={apiUsuarios.getUsuarioPorId(feedback.idPara)}
+					texto={feedback.texto}
+				/>
+			)
+
+		return (
+			<div className="home">
+				{this.state.carregando ? (
+					<Loading />
+				) : (
+						<div>
+							<form onSubmit={this.handleFeedbackSubmit}>
+								{/* Faltava o atributo value pegando do state */}
+
+								<select name="idPara" value={this.state.idPara} onChange={this.handleFeedbackChange}>
+									<option value="disable">Selecione para quem você quer enviar o feedback</option>
+									{apiUsuarios.getUsuariosNaoLogados().map(usuario => (
+										<option value={usuario.id}>{usuario.nome}</option>
+									))}
+								</select>
+
+								<textarea name="texto" placeholder="Escreva seu feedback aqui..." value={this.state.texto} onChange={this.handleFeedbackChange} />
+
+								<button>Enviar feedback</button>
+							</form>
+
+							<section>
+								<h2>Feedbacks recebidos</h2>
+								<div className="feedbacks">
+									{recebidos.length === 0 ? <p>Vc não recebeu nenhum feedback.</p> : recebidos}
+								</div>
+							</section>
+
+							<section>
+								<h2>Feedbacks enviados</h2>
+								<div className="feedbacks">
+									{enviados.length === 0 ? <p>Vc não enviou nenhum feedback.</p> : enviados}
+								</div>
+							</section>
+						</div>
+					)}
+			</div>
+		)
+	}
 }
 
 export default Home
