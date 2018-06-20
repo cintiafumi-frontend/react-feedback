@@ -1,5 +1,32 @@
+:root {
+  --cintia-dark-purple: #721E99;
+  --cintia-medium-purple: #8439A8;
+  --cintia-base-purple: #A059C1;
+  --cintia-light-purple: #BD83D9;
+  --cintia-white-purple: #DDB7EF;
+
+  --cintia-dark-pink: #BB1E71;
+  --cintia-medium-pink: #CD3F8A;
+  --cintia-base-pink: #DD60A2;
+  --cintia-light-pink: #EA88BC;
+  --cintia-white-pink: #F6B9D9;
+
+  --cintia-dark-green: #95D522;
+  --cintia-medium-green: #B0EA48;
+  --cintia-base-green: #C1F269;
+  --cintia-light-green: #D2F78F;
+  --cintia-white-green: #E5FBBD;
+
+  --cintia-dark-yellow: #DFE424;
+  --cintia-medium-yellow: #F7FB4D;
+  --cintia-base-yellow: #FAFE6E;
+  --cintia-light-yellow: #FDFE94;
+  --cintia-white-yellow: #FDFFC0; 
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }

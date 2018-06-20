@@ -1,0 +1,17 @@
+body {
+	animation: infinite-color-transition 10s;
+}
+@keyframes infinite-color-transition {
+	0% {
+		background: var(--cintia-base-purple);
+	}
+	25% {
+		background: var(--cintia-base-pink);
+	}
+	50% {
+		background: var(--cintia-base-yellow);
+	}
+	100% {
+		background: var(--cintia-base-green);
+	}
+}

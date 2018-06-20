@@ -1,10 +1,26 @@
+
 .contato {
-    padding: 3rem 1rem 0;
+	padding: 3rem 1rem 0;
+	font-family: 'Courier New', Courier, monospace;
+}
+.contato__user {
+	font-weight: bold;
+}
+.contato__purple {
+	color: var(--cintia-dark-purple);
+}
+.contato__propriedade {
+	margin-left: 20px;
+	padding: 0 10px;
+}
+.contato__valor {
+	color: #000;
+	text-decoration: none;
 }
 
 @media (min-width: 992px) {
-    .contato {
-        padding-left: 10%;
-        padding-right: 10%;
-    }
+	.contato {
+		padding-left: 10%;
+		padding-right: 10%;
+	}
 }

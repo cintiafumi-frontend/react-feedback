@@ -12,24 +12,59 @@ import './App.css'
 
 let usuarios = [
   {
-    id: "1ad83f55-441b-4e9e-9184-4471fd02e042",
-    nome: "Cintia",
-    foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqGlEWxrPneKIrW9pyiitAS_5GIO_HRAlaAvpa-EYKaQWFwHUX0Q",
-    email: "cintia@email.com",
+    id: "1ad83f55-441b-4e9e-9184-4471fd02e000",
+    nome: "Aline",
+    foto: "https://png.icons8.com/color/100/person-female.png",
+    email: "aline@email.com",
     senha: "123123"
   },
   {
-    id: "1ad83f55-441b-4e9e-9184-4471fd02e041",
+    id: "1ad83f55-441b-4e9e-9184-4471fd02e001",
+    nome: "Bea",
+    foto: "https://png.icons8.com/color/100/person-female.png",
+    email: "bea@email.com",
+    senha: "123123"
+  },
+  {
+    id: "1ad83f55-441b-4e9e-9184-4471fd02e002",
     nome: "Camila",
-    foto: "https://camo.mybb.com/e01de90be6012adc1b1701dba899491a9348ae79/687474703a2f2f7777772e6a71756572797363726970742e6e65742f696d616765732f53696d706c6573742d526573706f6e736976652d6a51756572792d496d6167652d4c69676874626f782d506c7567696e2d73696d706c652d6c69676874626f782e6a7067",
+    foto: "https://png.icons8.com/color/100/person-female.png",
     email: "camila@email.com",
     senha: "123123"
   },
   {
-    id: "1ad83f55-441b-4e9e-9184-4471fd02e040",
-    nome: "Karina Maria",
-    foto: "https://i1.wp.com/smashingdownloads.com/uploads/195/stunning-cute-wallpaper-image-for-baby-kitten-ideas-and-sleeping-trend.jpg?quality=80&strip=all&resize=100,100",
+    id: "1ad83f55-441b-4e9e-9184-4471fd02e003",
+    nome: "Carol",
+    foto: "https://png.icons8.com/color/100/person-female.png",
+    email: "carol@email.com",
+    senha: "123123"
+  },
+  {
+    id: "1ad83f55-441b-4e9e-9184-4471fd02e004",
+    nome: "Celly",
+    foto: "https://png.icons8.com/color/100/person-female.png",
+    email: "celly@email.com",
+    senha: "123123"
+  },
+  {
+    id: "1ad83f55-441b-4e9e-9184-4471fd02e005",
+    nome: "Cintia",
+    foto: "https://png.icons8.com/color/100/person-female.png",
+    email: "cintia@email.com",
+    senha: "123123"
+  },
+  {
+    id: "1ad83f55-441b-4e9e-9184-4471fd02e006",
+    nome: "Karina",
+    foto: "https://png.icons8.com/color/100/person-female.png",
     email: "karina@email.com",
+    senha: "123123"
+  },
+  {
+    id: "1ad83f55-441b-4e9e-9184-4471fd02e007",
+    nome: "Mariana",
+    foto: "https://png.icons8.com/color/100/person-female.png",
+    email: "mari@email.com",
     senha: "123123"
   }
 ]
@@ -86,6 +121,7 @@ class App extends React.Component {
           <Route path="/sobre" component={Sobre} />
           <Route component={NaoEncontrada} />
         </Switch>
+
       </div>
     );
   }

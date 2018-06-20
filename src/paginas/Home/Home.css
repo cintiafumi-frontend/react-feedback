@@ -1,19 +1,37 @@
-.home {
-    min-height: calc(100vh - 60px);
-    padding: 1.5rem 1rem 0;
-}
-
 .home__loading {
-    display: block;
-    margin: 0 auto;
+	display: block;
+	margin: 0 auto;
 }
 
-.home__section {
-    padding: 100px;
+.home__busca {
+	display: flex;
+	flex-direction: column;
+}
+
+select {
+	padding: 5px;
+	font-size: larger;
+	background: var(--cintia-white-purple);
+}
+
+select:active, select:hover {
+  outline: none
+}
+
+option {
+	font-size: medium;
+}
+
+option:active {
+	background: var(--cintia-dark-purple);
+	color: #fff;
 }
 
 @media (min-width: 992px) {
-    .home {
-        padding: 1.5rem 10% 0;
-    }
+
+	.feedbacks {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
 }

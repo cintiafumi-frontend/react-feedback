@@ -77,11 +77,11 @@ class Home extends React.Component {
 					<Loading />
 				) : (
 						<div>
-							<form onSubmit={this.handleFeedbackSubmit}>
+							<form className="home__busca" onSubmit={this.handleFeedbackSubmit}>
 								{/* Faltava o atributo value pegando do state */}
 
 								<select name="idPara" value={this.state.idPara} onChange={this.handleFeedbackChange}>
-									<option value="disable">Selecione para quem você quer enviar o feedback</option>
+									<option value="disable">Selecione a amiga...</option>
 									{apiUsuarios.getUsuariosNaoLogados().map(usuario => (
 										<option value={usuario.id}>{usuario.nome}</option>
 									))}
@@ -92,19 +92,19 @@ class Home extends React.Component {
 								<button>Enviar feedback</button>
 							</form>
 
-							<section>
+							<div className="home__section">
 								<h2>Feedbacks recebidos</h2>
 								<div className="feedbacks">
 									{recebidos.length === 0 ? <p>Vc não recebeu nenhum feedback.</p> : recebidos}
 								</div>
-							</section>
+							</div>
 
-							<section>
+							<div className="home__section">
 								<h2>Feedbacks enviados</h2>
 								<div className="feedbacks">
 									{enviados.length === 0 ? <p>Vc não enviou nenhum feedback.</p> : enviados}
 								</div>
-							</section>
+							</div>
 						</div>
 					)}
 			</div>
