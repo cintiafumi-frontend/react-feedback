@@ -89,7 +89,7 @@ class Home extends React.Component {
 
 								<textarea name="texto" placeholder="Escreva seu feedback aqui..." value={this.state.texto} onChange={this.handleFeedbackChange} />
 
-								<button>Enviar feedback</button>
+								<button className="feedback__button">Enviar feedback</button>
 							</form>
 
 							<div className="home__section">

@@ -1,7 +1,13 @@
-
 .contato {
 	padding: 3rem 1rem 0;
 	font-family: 'Courier New', Courier, monospace;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.contato__imagem{
+	width: 150px;
+	border-radius: 100%;
 }
 .contato__user {
 	font-weight: bold;

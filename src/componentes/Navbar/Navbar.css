@@ -12,6 +12,7 @@
 
 .navbar a {
 	outline: none;
+	color: #000;
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -20,7 +21,7 @@
 	color: var(--cintia-base-purple)
 }
 
-@media (min-width: 992px) {
+@media (min-width: 769px) {
 	.navbar {
 		padding: 0 10%;
 	}

@@ -34,5 +34,6 @@
 @media (min-width: 769px) {
     .feedback {
         width: 45%;
+        align-self: baseline;
     }
 }

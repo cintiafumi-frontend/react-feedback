@@ -55,7 +55,7 @@ class Menu extends React.Component {
 					</li>
 					<li>
 						<NavLink to="/contato" activeClassName="navbar-menu__opcoes--ativo" onClick={this.handleOpcaoClick}>
-							<span className="navbar-menu__span">{'{ cintia'}</span>{'fumi }'}
+							Contato
 						</NavLink>
 					</li>
 					<li>
