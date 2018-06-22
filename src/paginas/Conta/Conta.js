@@ -134,7 +134,7 @@ class Conta extends React.Component {
                         Enviar
                     </Botao>
 
-                    <Link to="/login">
+                    <Link to="/react-feedback/login">
                         Fazer login
                     </Link>
                 </Formulario>

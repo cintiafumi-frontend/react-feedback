@@ -49,17 +49,17 @@ class Menu extends React.Component {
 
 				<ul className={classesDasOpcoes}>
 					<li>
-						<NavLink to="/sobre" activeClassName="navbar-menu__opcoes--ativo" onClick={this.handleOpcaoClick}>
+						<NavLink to="/react-feedback/sobre" activeClassName="navbar-menu__opcoes--ativo" onClick={this.handleOpcaoClick}>
 							Sobre
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/contato" activeClassName="navbar-menu__opcoes--ativo" onClick={this.handleOpcaoClick}>
+						<NavLink to="/react-feedback/contato" activeClassName="navbar-menu__opcoes--ativo" onClick={this.handleOpcaoClick}>
 							Contato
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/login" activeClassName="navbar-menu__opcoes--ativo"	onClick={this.handleLoginOuSair}>
+						<NavLink to="/react-feedback/login" activeClassName="navbar-menu__opcoes--ativo"	onClick={this.handleLoginOuSair}>
 							{this.props.usuario ? 'Sair' : 'Login'}
 						</NavLink>
 					</li>

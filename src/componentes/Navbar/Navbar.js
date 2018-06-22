@@ -7,7 +7,7 @@ import './Navbar.css'
 function Navbar(props) {
 	return (
 		<nav className="navbar">
-			<Link to="/">
+			<Link to="/react-feedback">
 				<span className="navbar__logo">{'{ feed'}</span>back
         <span className="navbar__logo">{' }'}</span>
 			</Link>

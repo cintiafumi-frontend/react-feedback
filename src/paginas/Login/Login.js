@@ -113,7 +113,7 @@ class Login extends React.Component {
                         Enviar
                     </Botao>
 
-                    <Link to="/conta">
+                    <Link to="/react-feedback/conta">
                         Criar uma conta
                     </Link>
                 </Formulario>
