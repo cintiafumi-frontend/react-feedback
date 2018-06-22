@@ -1,10 +1,47 @@
+:root {
+    --fogo: #fb6542;
+    --terra: #ffbb00;
+    --ar: #375e97;
+    --agua: #3f681c;
+}
+
 .sobre {
     padding: 3rem 1rem 0;
 }
+.purple {
+    color: var(--cintia-base-purple);
+}
+.signo {
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 1px black;
+}
+.signo__fogo {
+    background: var(--fogo);
+}
+.signo__terra {
+    background: var(--terra);
+}
+.signo__ar {
+    background: var(--ar);
+}
+.signo__agua {
+    background: var(--agua);
+}
 
-@media (min-width: 992px) {
+@media (min-width: 769px) {
     .sobre {
         padding-left: 10%;
         padding-right: 10%;
+    }
+    .signos {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .signo {
+        width: 40%;
     }
 }

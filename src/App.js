@@ -6,6 +6,7 @@ import Conta from './paginas/Conta/Conta'
 import Contato from './paginas/Contato/Contato'
 import Sobre from './paginas/Sobre/Sobre'
 import NaoEncontrada from './paginas/NaoEncontrada/NaoEncontrada'
+import Footer from './componentes/Footer/Footer'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import './App.css'
 
@@ -116,12 +117,14 @@ class App extends React.Component {
             />
           )} />
           
+          <Route path="/home" component={Home} />
           <Route path="/conta" component={Conta} />
           <Route path="/contato" component={Contato} />
           <Route path="/sobre" component={Sobre} />
           <Route component={NaoEncontrada} />
         </Switch>
 
+        <Footer />
       </div>
     );
   }

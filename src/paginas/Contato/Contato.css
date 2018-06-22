@@ -11,6 +11,7 @@
 }
 .contato__user {
 	font-weight: bold;
+	text-align: unset;
 }
 .contato__purple {
 	color: var(--cintia-dark-purple);

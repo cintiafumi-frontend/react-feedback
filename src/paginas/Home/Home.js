@@ -34,13 +34,8 @@ class Home extends React.Component {
 		}
 
 		apiFeedbacks.putFeedback(feedback)
-		console.log('feedback', feedback)
-		console.log('this', this)
-		// Faltava limpar o state para poder limpar os valores do formulário
 		this.setState({ feedbacks: this.state.feedbacks.concat(feedback), idPara: '', texto: '' })
-		// Alerta avisando que foi enviado com sucesso
 		alert('Feedback enviado com successo!')
-		console.log('this.state handleFeedbackSubmit', this.state)
 	}
 
 	handleFeedbackChange = e => {
@@ -78,7 +73,7 @@ class Home extends React.Component {
 				) : (
 						<div>
 							<form className="home__busca" onSubmit={this.handleFeedbackSubmit}>
-								{/* Faltava o atributo value pegando do state */}
+								<h1>Envie seu feedback</h1>
 
 								<select name="idPara" value={this.state.idPara} onChange={this.handleFeedbackChange}>
 									<option value="disable">Selecione a amiga...</option>
