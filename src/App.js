@@ -107,20 +107,24 @@ class App extends React.Component {
 
         <Switch>
           <Route exact path="/" render={props => (
-            this.state.usuario ? <Home /> : <Redirect to="/login" />
+            <Redirect to="/react-feedback" />
+          )} />
+          
+          <Route exact path="/react-feedback" render={props => (
+            this.state.usuario ? <Home /> : <Redirect to="/react-feedback/login" />
           )} />
 
-          <Route path="/login" render={props => (
+          <Route path="/react-feedback/login" render={props => (
             <Login 
               onEnviarClick={this.logaUsuario} 
               historico={props.history} 
             />
           )} />
           
-          <Route path="/home" component={Home} />
-          <Route path="/conta" component={Conta} />
-          <Route path="/contato" component={Contato} />
-          <Route path="/sobre" component={Sobre} />
+          <Route path="/react-feedback/home" component={Home} />
+          <Route path="/react-feedback/conta" component={Conta} />
+          <Route path="/react-feedback/contato" component={Contato} />
+          <Route path="/react-feedback/sobre" component={Sobre} />
           <Route component={NaoEncontrada} />
         </Switch>
 
