@@ -44,7 +44,7 @@ class Login extends React.Component {
 
             if (usuarioLogado) {
                 this.props.onEnviarClick(usuarioLogado)
-                this.props.historico.push('/')
+                this.props.historico.push('/react-feedback')
             } else {
                 alert("Usuário e/ou senha inválidos")
             }
